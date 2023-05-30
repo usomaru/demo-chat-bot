@@ -1,0 +1,19 @@
+<div class="top-area">  
+  <div class="chat-area">
+      <div *ngFor="let message of chatData" class="message-area"
+          [ngClass]="{'chat-area-system': message.role === 'assistant', 'chat-area-user': message.role === 'user'}">
+          <div [ngClass]="{'message-box-assistant': message.role === 'assistant', 'message-box': message.role === 'user'}">
+              <div>
+                  {{message.content}}
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="input-message-area">
+    <mat-form-field class="sent-message-form-field">
+        <input matInput [formControl]="inputMessage" placeholder="送信するメッセージを入力"
+        (keydown.enter)="onKeyDown()" class="input-sent-message-textarea" />
+    </mat-form-field>
+    <button mat-flat-button (click)="onclick()" color="primary">送信</button>
+  </div>
+</div>
